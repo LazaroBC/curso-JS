@@ -52,5 +52,3 @@ const valores = Object.values(personaje);
 console.log(personaje, valores);
 const objeto = Object.keys(personaje);
 console.log(objeto);
-const objeto1 = Object.isFrozen(personaje);
-console.log(objeto1);
