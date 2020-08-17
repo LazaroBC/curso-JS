@@ -1,23 +1,33 @@
-import './styles.css';
-import { buscarHeroe } from './js/callbacks';
+// import { promesaLenta, promesaMedia, promesaRapida } from './js/promesas';
+/* import { buscarHeroe, buscarHeroeAsync } from './js/promesas' */
+
+import { obtenerHeroesArr, obtenerHeroesArr2, obtenerHeroeAwait } from './js/await';
 
 
-const heroeId = 'spider';
-const heroeId2 = 'capi';
+/* promesaLenta.then(console.log);
+promesaMedia.then(console.log);
+promesaRapida.then(console.log); */
 
+/* Promise.race([promesaLenta, promesaMedia, promesaRapida])
+    .then(console.log)
+    .catch(console.warn); */
 
+/* buscarHeroe('capi')
+    .then(heroe => console.log(heroe))
+    .catch(console.warn);
+buscarHeroeAsync('iron2')
+    .then(heroe => console.log(heroe))
+    .catch(console.warn); */
 
-buscarHeroe( heroeId, (err, heroe1 ) => {
-
-    if( err ){ return console.error( err ); }
     
-    buscarHeroe( heroeId2, (err, heroe2 ) => {
-        if( err ){ return console.error( err ); }
-
-        console.log(
-            `Enviando a ${heroe1.nombre} y a ${heroe2.nombre} a la misión`
-        );
-    })
+obtenerHeroesArr().then(console.table);
+obtenerHeroesArr2().then(heroes => {
+    console.table(heroes)
+});
+console.time('await');
+obtenerHeroeAwait('capi2').then(heroe => {
+    console.log(heroe)
+    console.timeEnd('await');
 });
 
-console.log('fin programa');
+
